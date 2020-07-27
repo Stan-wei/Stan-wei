@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<style>
+	.box
+	{
+		height:80px;
+		width:200px;
+		border:2px solid grey;
+		overflow:scroll;
+	}
+</style>
+<body onload="init();">
+	<div class="box" id="box">
+		<div>this is line 1</div>
+		<div>this is line 2</div>	
+		<div>this is line 3</div>
+		<div>this is line 4</div>
+		<div>this is line 5</div>
+		<div>this is line 6</div>
+		<div>this is line 7</div>
+		<div>this is line 8</div>
+	</div>	
+</body>
+<script>
+	var box;
+	//var value=0;
+	function init()
+	{
+		box=document.getElementById("box");
+		window.setInterval(scroll,50);	
+	}
+	function scroll()
+	{
+
+		if(box.scrollTop>=80)
+		{
+			box.scrollTop=0;
+			//alert("1");
+		}
+		else 
+		{
+			box.scrollTop+=3;
+		}
+		//alert(box.scrollTop);
+	}
+	
+</script>
