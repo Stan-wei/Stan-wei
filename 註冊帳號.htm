@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<title>Form表單註冊帳號</title>
+        <meta charset="utf-8"/>
+</head>
+
+<style>
+	form
+	{
+		line-height:3;
+	}
+	form>input, form>select
+	{
+		padding:5px;
+		border:1px solid blue;
+  		border-radius:50px;
+	}
+	
+	form>input:valid+.ok
+	{
+		font-size:20px;
+		color:red;
+		display:inline;
+	}
+	form>input:invalid+.ok
+	{
+		display:none;
+	}
+
+</style>
+<body>
+	<h3>註冊帳號</h3>
+	<form onsubmit="alert('表單送出');">
+		帳號:<input type="text" required placeholder="4-12英文+數字" pattern="[0-9a-zA-Z]{4,12}" />	
+			<span class="ok">V</span><br/>	
+ 		密碼:<input type="password" required placeholder="4-12英文+數字" pattern="[0-9a-zA-Z]{4,12}"/>
+			<span class="ok">V</span><br/>	
+		電郵:<input type="email" required/>
+			<span class="ok">V</span><br/>	
+
+		電話:<input type="text" required pattern="[0-9]{8,10}" />
+			<span class="ok">V</span><br/>	
+				
+		性別:
+		    男<input type="radio" name="gender" value="male" required/>
+		    女<input type="radio" name="gender" value="female" required/></br>
+		生日:<select required>
+			<option value="">出生年</option>
+			<option value="1999">1999</option>
+			<option value="1998">1998</option>
+		     </select><br/><br/>
+		<input type="submit" value="送出資料"/>
+	</form>
+</body>
