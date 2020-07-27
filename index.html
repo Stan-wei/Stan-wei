@@ -36,12 +36,15 @@
 	function goData()
 	{
 		var box1=document.getElementById("box1");
-		
+		alert("1");
 		var req=new XMLHttpRequest();
 		req.open("get","https://stan-wei.github.io/Stan-wei/enroll.htm");
 		req.onload=function()
 		{
+			alert("2");
+	
 			box1.innerHtml=this.responseText;
+			alert("3");
 		}
 		req.send();
 
