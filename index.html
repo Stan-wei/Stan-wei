@@ -23,6 +23,7 @@
 		<div>this is line 8</div>
 	</div>	
 	<button onclick="goData();">click</button>
+	<div id="box1"></div>
 </body>
 <script>
 	var box;
@@ -34,8 +35,17 @@
 	}
 	function goData()
 	{
+		var box1=document.getElementById("box1");
+		
 		var req=new XMLHttpRequest();
 		req.open("get","https://stan-wei.github.io/Stan-wei/enroll.htm");
+		req.onload=function()
+		{
+			box1.innerHtml=this.responseText;
+		}
+		req.send();
+
+
 	}
 	function scroll()
 	{
