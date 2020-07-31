@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" /> 
+    <title>控制單顆 LED 燈</title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+    <script src="https://webduinoio.github.io/webduino-blockly/webduino-blockly.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var led;
+            boardReady('aJ5jw', function (board) {
+                board.samplingInterval = 20;
+                led = getLed(board, 10);
+                led.off();
+            });
+ 
+            $("#led_button").click(function () {
+                if ($(this).html() == "開") {
+                    $(this).html("關");
+                    led.on();
+                }
+                else {
+                    $(this).html("開");
+                    led.off();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="led_button" style="font-size:100px">開</button>
+</body>
+</html>
