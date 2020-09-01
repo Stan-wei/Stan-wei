@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>sendraw</title>
+</head>
+<style>
+    body {
+        background-image: url( 'https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-simple-cartoon-maple-leaf-fall-image_35874.jpg' );
+    }
+
+    .title {
+        color: black;
+        font-size: 45px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        height: 120px;
+        width: 600px;
+        margin: 10px;
+        font-size: 30px;
+    }
+
+
+
+    .box {
+        height: 150px;
+        width: 300px;
+        margin: 10px;
+        text-align: center;
+        font-size: 80px;
+        border: 5px solid red;
+        display: none;
+    }
+</style>
+
+<body>
+
+    <div class="title">Office A/C remote control</div>
+    <div align="center">
+        <button id="btnONOFF" class="btn" onclick="Click(this)">ON/OFF</button>
+        <br />
+        <button id="btnTempUp" class="btn" onclick="Click(this)"><span style="font-size:60px;">↑</span></button>
+        <br />
+        <button id="btnTempDn" class="btn" onclick="Click(this)"><span style="font-size:60px;">↓</span></button>
+        <div>
+            <div class="box" id="box"></div>
+        </div>
+</body>
+<script>
+    var x = true;
+    function send(text) {
+        var xhr = new XMLHttpRequest();
+        //xhr.open("POST", "http://122.117.214.48:8000", true);//ok
+        xhr.open("POST", "http://192.168.50.202:8000", true);//ok
+
+
+
+        //xhr.open("POST", "http://192.168.1.145:8000", true);//ok
+
+        xhr.send(JSON.stringify(text));
+        x = !x;
+    }
+    function Click(Obj)
+    {
+        var box = document.getElementById("box");
+        box.style.display = "block";
+        switch (Obj.id)
+        {
+            case "btnONOFF":
+                {
+                    if (x)
+                    {
+                        send("0");
+                        box.innerText = "26";
+                    }
+                    else
+                    {
+                        send("1");
+                        box.innerText = "OFF";
+                    }
+                    break;
+                }
+            case "btnTempUp":
+                {
+                    if (box.innerText == "23") {
+                        send("4");
+                        box.innerText = "24";
+                    }
+                    else if (box.innerText == "24") {
+                        send("5");
+                        box.innerText = "25";
+                    }
+                    else if (box.innerText == "25") {
+                        send("6");
+                        box.innerText = "26";
+                    }
+                    else if (box.innerText == "26") {
+                        send("7");
+                        box.innerText = "27";
+                    }
+                    else if (box.innerText == "27") {
+                        send("8");
+                        box.innerText = "28";
+                    }
+                    else if (box.innerText == "OFF")
+                    {
+                        box.innerText = "Turn on the A/C first!";
+                    }
+                    else if (box.innerText == "Turn on the A/C first!")
+                    {
+                        box.innerText = "Turn on the A/C first!";
+                    }
+                    else
+                    {
+                        send("8");
+                        box.innerText = "28";
+                    }
+                    break;
+                }
+            case "btnTempDn":
+                {
+                    if (box.innerText == "28") {
+                        send("7");
+                        box.innerText = "27";
+                    }
+                    else if (box.innerText == "27") {
+                        send("6");
+                        box.innerText = "26";
+                    }
+                    else if (box.innerText == "26") {
+                        send("5");
+                        box.innerText = "25";
+                    }
+                    else if (box.innerText == "25") {
+                        send("4");
+                        box.innerText = "24";
+                    }
+                    else if (box.innerText == "24") {
+                        send("3");
+                        box.innerText = "23";
+                    }
+                    else if (box.innerText=="OFF")
+                    {
+                        box.innerText = "Turn on the A/C first!";
+                    }
+                    else if (box.innerText == "Turn on the A/C first!")
+                    {
+                        box.innerText = "Turn on the A/C first!";
+                    }
+                    else
+                    {
+                        send("3");
+                        box.innerText = "23";
+                    }
+                    break;
+                } 
+
+        }
+    }
+</script>
+
+</html>
