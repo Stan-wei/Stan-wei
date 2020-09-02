@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>sendraw</title>
+</head>
+<style>
+    body {
+        background-image: url( 'https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-simple-cartoon-maple-leaf-fall-image_35874.jpg' );
+    }
+
+    .title {
+        color: black;
+        font-size: 45px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        height: 120px;
+        width: 600px;
+        margin: 10px;
+        font-size: 30px;
+    }
+
+
+
+    .box {
+        height: 150px;
+        width: 300px;
+        margin: 10px;
+        text-align: center;
+        font-size: 80px;
+        border: 5px solid red;
+        display: none;
+    }
+</style>
+
+<body>
+
+    <div class="title">WebServer LED on/off</div>
+    <div align="center">
+        <button id="btnONOFF" class="btn" onclick="Click(this)">ON</button>
+        <br />
+        <button id="btnTempUp" class="btn" onclick="Click(this)"><span style="font-size:60px;">Off</span></button>
+</body>
+<script>
+    var x = true;
+    
+    function Click(Obj)
+    {
+        var box = document.getElementById("box");
+        box.style.display = "block";
+        switch (Obj.id)
+        {
+            case "btnONOFF":
+                {
+ 			var xhr = new XMLHttpRequest();
+        		xhr.open("GET", "https://122.117.214.48:8000/H", true);//ok
+        		//xhr.open("GET", "http://192.168.50.202:8000/H", true);//o
+
+        		xhr.send();
+                  
+                }
+            case "btnTempUp":
+			var xhr = new XMLHttpRequest();
+        		xhr.open("GET", "https://122.117.214.48:8000/L", true);//ok
+        		//xhr.open("GET", "http://192.168.50.202:8000/H", true);//o
+
+        		xhr.send();
+               
+                } 
+
+        }
+    }
+</script>
+
+</html>
